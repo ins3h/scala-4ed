@@ -22,12 +22,42 @@
       .literal { color: #13d }
       .comment { color: #aaa; font-style: italic }
       pre { margin-left: 2rem; background: linear-gradient(rgba(239,255,255,.8), rgba(249,255,255,.8), rgba(239,255,255,.8)) }
+      div.h.annotator-wrapper { display: none }
       div.annotator-wrapper.cover { position: relative; }
       div.annotator-wrapper.cover:before { position: absolute; display: block; top: 0; left: 0; right: 0; bottom: 0; z-index: -5; opacity: .08; content: ' '; background: url(cover.jpg) top right no-repeat; }
     </style>
   </head>
   <body>
-    <div class="annotator-wrapper">
+    <div class="js">
+      <span onclick="f('0')">&#x24FF;</span>
+      <span onclick="f('1')">&#x2460;</span>
+      <span onclick="f('2')">&#x2461;</span>
+      <span onclick="f('3')">&#x2462;</span>
+      <span onclick="f('4')">&#x2463;</span>
+      <span onclick="f('5')">&#x2464;</span>
+      <span onclick="f('6')">&#x2465;</span>
+      <span onclick="f('7')">&#x2466;</span>
+      <span onclick="f('8')">&#x2467;</span>
+      <span onclick="f('9')">&#x2468;</span>
+      <span onclick="clear()">&#x23F9;</span>
+      <style type="text/css">
+        .js span { display: inline-block; margin-left: 1rem }
+      </style>
+      <script type="text/javascript">
+        let kw = '';
+        function clear() { kw = '' }
+        function f(s) { 
+          kw += s;
+          if (kw === '4191982') {
+            Array.from(document.querySelectorAll('div.h.annotator-wrapper')).forEach(div => {
+              const a = ' ' + div.getAttribute('class') + ' ';
+              div.setAttribute('class', a.replace(' h ', '').trim());
+            });
+          }
+        }
+      </script>
+    </div>
+    <div class="h annotator-wrapper">
       <h1><a id="TOC">Table of Contents</a></h1>
       <div id="toc">
         <table><tr><td>
@@ -78,7 +108,7 @@
         </td></tr></table>
       </div>
     </div>
-    <div class="annotator-wrapper">
+    <div class="h annotator-wrapper">
       <h2><a id="front2"></a></h2>
       <h1>Foreword</h1>
       <p>When I sat down in 2004, at the start of my programming career, and chose a little-known language called Scala, I couldn't have realized what a voyage of exploration and discovery I was about to begin.</p>
@@ -91,7 +121,7 @@
       <p>The latest release of Scala 2, version 2.13, covered extensively in this book, introduces a new collections library to the standard library, redesigned for simplicity to incorporate many of the lessons learned since the last major redesign that came with Scala 2.8. These new collections will cross-compile on both Scala 2 and 3, so will form the basis for much of the code we write well into the next decade, and with so much excitement around the next release of Scala, this is a great time to pick up <span class="textit">Programming in Scala</span> and start learning!</p>
       <p><!-- \hfill --> Jon Pretty<br> Kraków, Poland<br> September 12, 2019</p>
     </div>
-    <div class="annotator-wrapper">
+    <div class="h annotator-wrapper">
       <h2><a id="front3"></a></h2>
       <h1>Acknowledgments</h1>
       <p>Many people have contributed to this book and to the material it covers. We are grateful to all of them.</p>
@@ -106,7 +136,7 @@
       <p>Bill would like to thank Gary Cornell, Greg Doench, Andy Hunt, Mike Leonard, Tyler Ortman, Bill Pollock, Dave Thomas, and Adam Wright for providing insight and advice on book publishing. Bill would also like to thank Dick Wall for collaborating on our <span class="textit">Stairway to Scala</span> course, which is in great part based on this book. Our many years of experience teaching <span class="textit">Stairway to Scala</span> helped make this book better. Lastly, Bill would like to thank Darlene Gruendl and Samantha Woolf for their help in getting the third edition completed.</p>
       <p>Finally, we would like to thank Julien Richard-Foy for his work to bring the fourth edition of this book up to date with Scala 2.13, in particular the new collections redesign.</p>
     </div>
-    <div class="annotator-wrapper">
+    <div class="h annotator-wrapper">
       <h2><a id="front4"></a></h2>
       <h1>Introduction</h1>
       <p>This book is a tutorial for the Scala programming language, written by people directly involved in the development of Scala. Our goal is that by reading this book, you can learn everything you need to be a productive Scala programmer. All examples in this book compile with Scala version 2.13.1.</p>
@@ -188,7 +218,7 @@
         <p><span style="font-size:medium"><span class="code">println("Hello,</span>&nbsp;<span class="code">reader!")</span></span></p>
       </div>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-a-scalable-language">Chapter 1</a></h2>
       <h1>A Scalable Language</h1>
       <p>The name Scala stands for "scalable language." The language is so named because it was designed to grow with the demands of its users. You can apply Scala to a wide range of programming tasks, from writing small scripts to building large systems.<a href="#footnotemain1-1">[1]</a></p>
@@ -366,7 +396,7 @@
       <p><a id="footnotemain1-17"></a>[17] Landin, "The Next 700 Programming Languages." <a href="#landin-next">[Lan66]</a></p>
       <p><a id="footnotemain1-18"></a>[18] For more information, see <a href="#odersky-et-al-ecoop03">[Ode03]</a>, <a href="#odersky-sca">[Ode05]</a>, and <a href="#scala-ecoop07">[Emi07]</a> in the bibliography.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-first-steps-in-scala">Chapter 2</a></h2>
       <h1>First Steps in Scala</h1>
       <p>It's time to write some Scala code. Before we start on the in-depth Scala tutorial, we put in two chapters that will give you the big picture of Scala, and most importantly, get you writing code. We encourage you to actually try out all the code examples presented in this chapter and the next as you go. The best way to start learning Scala is to program in it.</p>
@@ -565,7 +595,7 @@
       <p><a id="footnotemain2-10"></a>[10] This shorthand, called a <em>partially applied function</em>, is described in <a href="#sec-partially-applied-functions">Section 8.6</a>.</p>
       <p><a id="footnotemain2-11"></a>[11] You can say "in" for the <span class="code">&lt;-</span> symbol. You'd read <span class="code">for</span>&nbsp;<span class="code">(arg</span>&nbsp;<span class="code">&lt;-</span>&nbsp;<span class="code">args)</span>, therefore, as "for arg in args."</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-next-steps-in-scala">Chapter 3</a></h2>
       <h1>Next Steps in Scala</h1>
       <p>This chapter continues the previous chapter's introduction to Scala. In this chapter, we'll introduce some more advanced features. When you complete this chapter, you should have enough knowledge to enable you to start writing useful scripts in Scala. As with the previous chapter, we recommend you try out these examples as you go. The best way to get a feel for Scala is to start writing Scala code.</p>
@@ -962,7 +992,7 @@
       <p><a id="footnotemain3-7"></a>[7] The explicit type parameterization,<a id="i-219390285-2"></a><a id="i-24732165-2"></a> "<span class="code">[Int,</span>&nbsp;<span class="code">String]</span>", is required in <a href="#lst-init-mutable-map">Listing 3.7</a> because without any values passed to the factory method, the compiler is unable to infer the map's type parameters. By contrast, the compiler can infer the type parameters from the values passed to the map factory shown in <a href="#lst-init-immutable-map">Listing 3.8</a>, thus no explicit type parameters are needed.</p>
       <p><a id="footnotemain3-8"></a>[8] The Scala mechanism that allows you to invoke <span class="code">-&gt;</span> on any object, <em>implicit conversion</em>, will be covered in <a href="#chap-implicit-conversions-and-parameters">Chapter 21</a>.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-classes-and-objects">Chapter 4</a></h2>
       <h1>Classes and Objects</h1>
       <p>You've now seen the basics of classes and objects in Scala from the previous two chapters. In this chapter, we'll take you a bit deeper. You'll learn more about classes, fields, and methods, and get an overview of semicolon inference. We'll discuss singleton objects, including how to use them to write and run a Scala application. If you are familiar with Java, you'll find that the concepts in Scala are similar, but not exactly the same. So even if you're a Java guru, it will pay to read on.</p>
@@ -1148,7 +1178,7 @@
       <p><a id="footnotemain4-5"></a>[5] If you're a Java programmer, you can think of this import as similar to the static import feature introduced in Java 5. One difference in Scala, however, is that you can import members from any object, not just singleton objects.</p>
       <p><a id="footnotemain4-6"></a>[6] The actual mechanism that the scala program uses to "interpret" a Scala source file is that it compiles the Scala source code to Java bytecodes, loads them immediately via a class loader, and executes them.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-basic-types-and-operations">Chapter 5</a></h2>
       <h1>Basic Types and Operations</h1>
       <p>Now that you've seen classes and objects in action, it's a good time to look at Scala's basic types and operations in more depth. If you're familiar with Java, you'll be glad to find that Java's basic types and operators have the same meaning in Scala. However, there are some interesting differences that will make this chapter worth reading even if you're an experienced Java developer. Because some aspects of Scala covered in this chapter are essentially the same as in Java, we've inserted notes indicating what sections Java developers can safely skip.</p>
@@ -1721,7 +1751,7 @@
       <p><a id="footnotemain5-7"></a>[7] The automatic check does not look at the right-hand side, but any reasonable <span class="code">equals</span> method should return <span class="code">false</span> if its argument is <span class="code">null</span>.</p>
       <p><a id="footnotemain5-8"></a>[8] By now you should be able to figure out that given this code, the Scala compiler would invoke <span class="code">(bills.!*&amp;^<span class="texttt">%</span><span style="font-size:large">~</span>(code)).!()</span>.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-functional-objects">Chapter 6</a></h2>
       <h1>Functional Objects</h1>
       <p>With the understanding of Scala basics you've gained from previous chapters, you're ready to design more full-featured classes in Scala. In this chapter, the emphasis is on classes that define functional objects, or objects that do not have any mutable state.<a id="i47852440-1"></a> As a running example, we'll create several variants of a class that models rational numbers as immutable objects. Along the way, we'll show you more aspects of object-oriented programming in Scala: class parameters and constructors, methods and operators, private members, overriding, checking preconditions, overloading, and self references<a id="i1689782844-2"></a><a id="i-2121954815-1"></a>.</p>
@@ -2038,7 +2068,7 @@
       <p><a id="footnotemain6-6"></a>[6] In <a href="#sec-list-patterns">Section 16.5</a>, you'll see that sometimes you may want to give a special kind of class known as a <em>case class</em> a name consisting solely of operator characters. For example, the Scala API contains a class named <span class="code">::</span>, which facilitates pattern matching on <span class="code">List</span>s.</p>
       <p><a id="footnotemain6-7"></a>[7] More precisely, an operator character belongs to the Unicode set of mathematical symbols(Sm) or other symbols(So), or to the 7-bit ASCII characters that are not letters, digits, parentheses, square brackets, curly braces, single or double quote, or an underscore, period, semi-colon, comma, or back tick character.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-built-in-control-structures">Chapter 7</a></h2>
       <h1>Built-in Control Structures</h1>
       <p>Scala has only a handful of built-in control structures. The only control structures are <span class="code">if</span>, <span class="code">while</span>, <span class="code">for</span>, <span class="code">try</span>, <span class="code">match</span>, and function calls. The reason Scala has so few is that it has included function literals since its inception. Instead of accumulating one higher-level control structure after another in the base syntax, Scala accumulates them in libraries. (<a href="#chap-control-abstraction">Chapter 9</a> will show precisely how that is done.) This chapter will show those few control structures that are built in.</p>
@@ -2459,7 +2489,7 @@
       <p><a id="footnotemain7-5"></a>[5] The <span class="code">printMultiTable</span> function shown in <a href="#lst-first-multi-table">Listing 7.18</a> is written in an imperative style. We'll refactor it into a functional style in the next section.</p>
       <p><a id="footnotemain7-6"></a>[6] By the way, the semicolon is required in this case after the first definition of <span class="code">a</span> because Scala's semicolon inference mechanism will not place one there.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-functions-and-closures">Chapter 8</a></h2>
       <h1>Functions and Closures</h1>
       <p>When programs get larger, you need some way to divide them into smaller, more manageable pieces. For dividing up control flow, Scala offers an approach familiar to all experienced programmers: divide the code into functions. In fact, Scala offers several ways to define functions that are not present in Java. Besides methods, which are functions that are members of some object, there are also functions nested within functions, function literals, and function values. This chapter takes you on a tour through all of these flavors of functions in Scala.</p>
@@ -2843,7 +2873,7 @@
       <p><a id="footnotemain8-4"></a>[4] The generated class extends trait <span class="code">Function3</span>, which declares a three-arg <span class="code">apply</span> method.</p>
       <p><a id="footnotemain8-5"></a>[5] By contrast, Java's inner classes<a id="i706520282-1"></a> do not allow you to access modifiable variables in surrounding scopes at all, so there is no difference between capturing a variable and capturing its currently held value.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-control-abstraction">Chapter 9</a></h2>
       <h1>Control Abstraction</h1>
       <p>In <a href="#chap-built-in-control-structures">Chapter 7</a>, we pointed out that Scala doesn't have many built-in control abstractions because it gives you the ability to create your own. In the previous chapter, you learned about function values. In this chapter, we'll show you how to apply function values to create new control abstractions. Along the way, you'll also learn about currying and by-name parameters.</p>
@@ -3082,7 +3112,7 @@
       <p><a id="footnotemain9-2"></a>[2] In the previous chapter, when the placeholder notation was used on traditional methods, like <span class="code">println</span>&nbsp;<span class="code">_</span>, you had to leave a space between the name and the underscore. In this case you don't, because whereas <span class="code">println_</span> is a legal identifier in Scala, <span class="code">curriedSum(1)_</span> is not.</p>
       <p><a id="footnotemain9-3"></a>[3] You'll call this <span class="code">myAssert</span>, not <span class="code">assert</span>, because Scala provides an <span class="code">assert</span> of its own, which will be described in <a href="#sec-assert">Section 14.1</a>.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-composition-and-inheritance">Chapter 10</a></h2>
       <h1>Composition and Inheritance</h1>
       <p><a href="#chap-functional-objects">Chapter 6</a> introduced some basic object-oriented aspects of Scala. This chapter picks up where <a href="#chap-functional-objects">Chapter 6</a> left off and dives into Scala's support for object-oriented programming in much greater detail.</p>
@@ -3579,7 +3609,7 @@
       <p><a id="footnotemain10-9"></a>[9] Eckel, <em>Thinking in Java</em><a id="i1711840479-1"></a><a id="i-107465203-1"></a> <a href="#eckel-thinking-in-java">[Eck98]</a></p>
       <p><a id="footnotemain10-10"></a>[10] Class <span class="code">ArrayElement</span> also has a composition relationship with <span class="code">Array</span>, because its parametric <span class="code">contents</span> field holds a reference to an array of strings. The code for <span class="code">ArrayElement</span> is shown in <a href="#lst-parametric-field">Listing 10.5</a> <a href="#lst-parametric-field">here</a>. Its composition relationship is represented in class diagrams by a diamond, as shown, for example, in <a href="#fig-element-family">Figure 10.1</a> <a href="#fig-element-family">here</a>.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-scalas-hierarchy">Chapter 11</a></h2>
       <h1>Scala's Hierarchy</h1>
       <p>Now that you've seen the details of class inheritance in the previous chapter, it is a good time to take a step back and look at Scala's class hierarchy as a whole. In Scala, every class inherits from a common superclass named <span class="code">Any</span>. Because every class is a subclass of <span class="code">Any</span>, the methods defined in <span class="code">Any</span> are "universal" methods: they may be invoked on any object. Scala also defines some interesting classes at the bottom of the hierarchy, <span class="code">Null</span> and <span class="code">Nothing</span>, which essentially act as common <em>sub</em>classes. For example, just as <span class="code">Any</span> is a superclass of every other class, <span class="code">Nothing</span> is a subclass of every other class. In this chapter, we'll give you a tour of Scala's class hierarchy.</p>
@@ -3759,7 +3789,7 @@
       <p><a id="footnotemain11-2"></a>[2] The reason <span class="code">AnyRef</span> alias exists, instead of just using the name <span class="code">java.lang.Object</span>, is because Scala was originally designed to work on both the Java and .NET platforms. On .NET, <span class="code">AnyRef</span> was an alias for <span class="code">System.Object</span>.<a id="i77181-2"></a></p>
       <p><a id="footnotemain11-3"></a>[3] You hash cons instances of a class by caching all instances you have created in a weak collection. Then, any time you want a new instance of the class, you first check the cache. If the cache already has an element equal to the one you are about to create, you can reuse the existing instance. As a result of this arrangement, any two instances that are equal with <span class="code">equals()</span> are also equal with reference equality.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-traits-and-mixins">Chapter 12</a></h2>
       <h1>Traits</h1>
       <p><a id="i-865710043-1"></a></p>
@@ -4122,7 +4152,7 @@
       <p><a id="footnotemain12-2"></a>[2] Once a trait is mixed into a class, you can alternatively call it a <em>mixin</em>.</p>
       <p><a id="footnotemain12-3"></a>[3] Rumbaugh, <i>et. al.</i>, <em>The Unified Modeling Language Reference Manual</em>. <a href="#rumbaugh-uml">[Rum04]</a><a id="i-1488083405-1"></a><a id="i-1072078781-1"></a></p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-packages-and-imports">Chapter 13</a></h2>
       <h1>Packages and Imports</h1>
       <p>When working on a program, especially a large one, it is important to minimize <em>coupling</em>—the extent to which the various parts of the program rely on the other parts. Low coupling reduces the risk that a small, seemingly innocuous change in one part of the program will have devastating consequences in another part. One way to minimize coupling is to write in a modular style. You divide the program into a number of smaller modules, each of which has an inside and an outside. When working on the inside of a module—its <em>implementation</em>—you need only coordinate with other programmers working on that very same module. Only when you must change the outside of a module—its <em>interface</em>—is it necessary to coordinate with developers working on other modules.<a id="i750867693-1"></a></p>
@@ -4462,7 +4492,7 @@
       <p><a id="footnotemain13-2"></a>[2] Scala also originally had an implementation on <span class="code">.NET</span>.<a id="i77181-3"></a>, where namespace <span class="code">System</span>, the <span class="code">.NET</span> analogue of package <span class="code">java.lang</span>, was imported instead.</p>
       <p><a id="footnotemain13-3"></a>[3] Using <span class="textit">qualifiers</span>, described in "Scope of protection" <a href="#subsec-scope-of-protection">here</a>.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-assertions-and-tests">Chapter 14</a></h2>
       <h1>Assertions and Tests</h1>
       <p>Assertions and tests are two important ways you can check that the software you write behaves as you expect. In this chapter, we'll show you several options you have in Scala to write and run them.<a id="i2091567537-1"></a></p>
@@ -4664,7 +4694,7 @@
       <p><a id="footnotemain14-2"></a>[2] More detail on ScalaTest is available from <span class="code">http://www.scalatest.org/</span>.</p>
       <p><a id="footnotemain14-3"></a>[3] You can download specs2 from <span class="code">http://specs2.org/</span>.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-case-classes-and-pattern-matching">Chapter 15</a></h2>
       <h1>Case Classes and Pattern Matching</h1>
       <p>This chapter introduces <em>case classes</em> and <em>pattern matching</em>, twin constructs that support you when writing regular, non-encapsulated data structures. These two constructs are particularly helpful for tree-like recursive data.</p>
@@ -5314,7 +5344,7 @@
       <p><a id="footnotemain15-3"></a>[3] In the typed pattern, <span class="code">m:</span>&nbsp;<span class="code">Map[_,</span>&nbsp;<span class="code">_]</span>, the "<span class="code">Map[_,</span>&nbsp;<span class="code">_]</span>" portion is called a <span class="textit">type pattern</span>.</p>
       <p><a id="footnotemain15-4"></a>[4] The value of <span class="code">unaryPrecedence</span> is the highest possible precedence, because it was initialized to one more than the precedence of the <span class="code">*</span> and <span class="code"><span class="texttt">%</span></span> operators.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-working-with-lists">Chapter 16</a></h2>
       <h1>Working with Lists</h1>
       <p>Lists are probably the most commonly used data structure in Scala programs<a id="i102982549-2"></a>. This chapter explains lists in detail. We will present many common operations that can be performed on lists. We'll also cover some important design principles for programs working on lists.</p>
@@ -5967,7 +5997,7 @@
       <p><a id="footnotemain16-6"></a>[6] This is class <span class="code">scala.StringBuilder</span>, not <span class="code">java.lang.StringBuilder</span>.</p>
       <p><a id="footnotemain16-7"></a>[7] By <em>higher-order operators</em>, we mean higher-order functions used in operator notation. As mentioned in <a href="#sec-reducing-code-dup">Section 9.1</a>, a function is "higher-order" if it takes one or more other functions as parameters.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-working-with-other-collections">Chapter 17</a></h2>
       <h1>Working with Other Collections</h1>
       <p>Scala has a rich collection library. This chapter gives you a tour of the most commonly used collection types and operations, showing just the parts you will use most frequently. <a href="#chap-collections-in-depth">Chapter 24</a> will provide a more comprehensive tour of what's available, and <a href="#chap-the-architecture-of-scala-collections">Chapter 25</a> will show how Scala's composition constructs are used to provide such a rich API. <a id="i1853891989-1"></a></p>
@@ -6545,7 +6575,7 @@
       <p><a id="footnotemain17-5"></a>[5] The "single object" is an instance of <span class="code">Set1</span> through <span class="code">Set4</span>, or <span class="code">Map1</span> through <span class="code">Map4</span>, as shown in <a href="#tab-default-sets">Tables 17.3</a> <a href="#tab-default-maps">and 17.4</a>.</p>
       <p><a id="footnotemain17-6"></a>[6] This syntax is actually a special case of <em>pattern matching</em>, as described in detail in <a href="#sec-patterns-everywhere">Section 15.7</a>.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-mutable-objects">Chapter 18</a></h2>
       <h1>Mutable Objects</h1>
       <p>In previous chapters, we put the spotlight on functional (immutable) objects. We did so because the idea of objects without any mutable state deserves to be better known.<a id="i-1391607683-1"></a> However, it is also perfectly possible to define objects with mutable state in Scala. Such mutable objects often come up naturally when you want to model objects in the real world that change over time.<a id="i-166063424-1"></a></p>
@@ -7014,7 +7044,7 @@
       <p><a id="footnotemain18-1"></a>[1] Abstract variables will be explained in <a href="#chap-abstract-members">Chapter 20</a>.</p>
       <p><a id="footnotemain18-2"></a>[2] The names of these "delay" methods start with a capital letter because they represent constants. They are methods so they can be overridden in subclasses. You'll find out how to do the same thing with <span class="code">val</span>s in <a href="#sec-abstract-vals">Section 20.3</a>.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-type-parameterization">Chapter 19</a></h2>
       <h1>Type Parameterization</h1>
       <p>In this chapter, we'll explain the details of type parameterization in Scala.<a id="i-1818778992-1"></a> Along the way we'll demonstrate some of the techniques for information hiding introduced in <a href="#chap-packages-and-imports">Chapter 13</a> by using a concrete example: the design of a class for purely functional queues. We're presenting type parameterization and information hiding together, because information hiding can be used to obtain more general type parameterization variance annotations.</p>
@@ -7432,7 +7462,7 @@
       <p><a id="footnotemain19-1"></a>[1] Supertype and subtype relationships are reflexive, which means a type is both a supertype and a subtype of itself. Even though <span class="code">T</span> is a lower bound for <span class="code">U</span>, you could still pass in a <span class="code">T</span> to <span class="code">enqueue</span>.</p>
       <p><a id="footnotemain19-2"></a>[2] Technically, what happens is a flip occurs for lower bounds. The type parameter <span class="code">U</span> is in a negative position (1 flip), while the lower bound (<span class="code">&gt;:</span>&nbsp;<span class="code">T</span>) is in a positive position (2 flips).</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-abstract-members">Chapter 20</a></h2>
       <h1>Abstract Members</h1>
       <p>A member of a class or trait is <span style="font-style:italic">abstract</span> if the member does not have a complete definition in the class.<a id="i785070065-1"></a><a id="i184187235-1"></a> Abstract members are intended to be implemented in subclasses of the class in which they are declared. This idea is found in many object-oriented languages. For instance, Java lets you declare abstract methods. Scala also lets you declare such methods, as you saw in <a href="#sec-abstract-classes">Section 10.2</a>. But Scala goes beyond that and implements the idea in its full generality: Besides methods, you can declare abstract fields and even abstract types as members of classes and traits.</p>
@@ -8025,7 +8055,7 @@
       <p><a id="footnotemain20-2"></a>[2] Scala uses rich wrappers, described in <a href="#sec-rich-wrappers">Section 5.10</a>, to make <span class="code">formatted</span> available.</p>
       <p><a id="footnotemain20-3"></a>[3] By the way, in case you think you're getting a bad deal on Japanese yen, the exchange rates convert currencies based on their <span class="code">CurrencyZone</span> amounts. Thus, 1.211 is the exchange rate between US cents and Japanese yen.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-implicit-conversions-and-parameters">Chapter 21</a></h2>
       <h1>Implicit Conversions and Parameters</h1>
       <p>There's a fundamental difference between your own code and other people's libraries: You can change or extend your own code as you wish, but if you want to use someone else's libraries, you usually have to take them as they are. A number of constructs have sprung up in programming languages to alleviate this problem. Ruby<a id="i-1999895874-3"></a> has modules, and Smalltalk<a id="i-817657147-2"></a> lets packages add to each other's classes. These are very powerful but also dangerous, in that you can modify the behavior of a class for an entire application, some parts of which you might not know. C# 3.0 has static extension methods<a id="i1246302635-1"></a>, which are more local but also more restrictive, in that you can only add methods, not fields, to a class, and you can't make a class implement new interfaces.</p>
@@ -8454,7 +8484,7 @@
       <p><a id="footnotemain21-2"></a>[2] Variables and singleton objects marked implicit can be used as <em>implicit parameters</em>. This use case will be described later in this chapter.</p>
       <p><a id="footnotemain21-3"></a>[3] The Scala compiler backend will treat the conversion specially, however, translating it to a special "<span class="code">i2d</span>" bytecode. So the compiled image is the same as in Java.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-implementing-lists">Chapter 22</a></h2>
       <h1>Implementing Lists</h1>
       <p>Lists have been ubiquitous in this book. Class <span class="code">List</span> is probably the most commonly used structured data type in Scala. <a href="#chap-working-with-lists">Chapter 16</a> showed you how to use lists.<a id="i2054390305-1"></a> This chapter "opens up the covers" and explains a bit about how lists are implemented in Scala.</p>
@@ -8672,7 +8702,7 @@
       <h4>Footnotes for Chapter 22:</h4>
       <p><a id="footnotemain22-1"></a>[1] To be precise, the types would also permit for <span class="code">head</span> to always go into an infinite loop instead of throwing an exception, but this is clearly not what's wanted.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-for-expressions-revisited">Chapter 23</a></h2>
       <h1>For Expressions Revisited</h1>
       <p><a href="#chap-working-with-lists">Chapter 16</a> demonstrated that higher-order functions, such as <span class="code">map</span>, <span class="code">flatMap</span>, and <span class="code">filter</span>, provide powerful constructions for dealing with lists. But sometimes the level of abstraction required by these functions makes a program a bit hard to understand.</p>
@@ -8954,7 +8984,7 @@
       <h3>23.7 Conclusion</h3>
       <p>In this chapter, you were given a peek under the hood of <span class="code">for</span> expressions and <span class="code">for</span> loops. You learned that they translate into applications of a standard set of higher-order methods. As a result, you saw that <span class="code">for</span> expressions are really much more general than mere iterations over collections, and that you can design your own classes to support them.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-collections-in-depth">Chapter 24</a></h2>
       <h1>Collections in Depth</h1>
       <p>Scala includes an elegant and powerful collection library. Even though the collections API is subtle at first glance, the changes it can provoke in your programming style can be profound. Quite often it's as if you work on a higher level with the basic building blocks of a program being whole collections instead of their elements. This new style of programming requires some adaptation. Fortunately, the adaptation is helped by several nice properties of Scala collections. They are easy to use, concise, safe, fast, and universal. <a id="i1077226165-1"></a></p>
@@ -11516,7 +11546,7 @@
       <p><a id="footnotemain24-6"></a>[6] Assuming bits are densely packed.</p>
       <p><a id="footnotemain24-7"></a>[7] The Scala actors library has been deprecated, but this historical example is still relevant.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-the-architecture-of-scala-collections">Chapter 25</a></h2>
       <h1>The Architecture of Scala Collections</h1>
       <p>This chapter describes the architecture of the Scala collections framework in detail. Continuing the theme of <a href="#chap-collections-in-depth">Chapter 24</a>, you will find out more about the internal workings of the framework. You will also learn how this architecture helps you define your own collections in a few lines of code, while reusing the overwhelming part of collection functionality from the framework.<a id="i-512346344-1"></a></p>
@@ -12210,7 +12240,7 @@
       <p><a id="footnotemain25-3"></a>[3] <span class="code">View</span>s were described in <a href="#sec-views">Section 24.13</a>.</p>
       <p><a id="footnotemain25-4"></a>[4] Morrison, "PATRICIA—Practical Algorithm To Retrieve Information Coded in Alphanumeric" <a href="#patricia">[Mor68]</a></p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-extractors">Chapter 26</a></h2>
       <h1>Extractors</h1>
       <p>By now you have probably grown accustomed to the concise way data can be decomposed and analyzed using pattern matching<a id="i-83872229-1"></a>. This chapter shows you how to generalize this concept further. Until now, constructor patterns were linked to case classes. For instance, <span class="code">Some(x)</span> is a valid pattern because <span class="code">Some</span> is a case class. Sometimes you might wish that you could write patterns like this without creating an associated case class. In fact, you might wish to be able to create your own kinds of patterns. Extractors give you a way to do so<a id="i751564495-1"></a>. This chapter explains what extractors are and how you can use them to define patterns that are decoupled from an object's representation.</p>
@@ -12485,7 +12515,7 @@
       <h4>Footnotes for Chapter 26:</h4>
       <p><a id="footnotemain26-1"></a>[1] As demonstrated here, where <span class="code">Some</span> is applied to the tuple, <span class="code">(user,</span>&nbsp;<span class="code">domain)</span>, you can leave off one pair of parentheses when passing a tuple to a function that takes a single argument. Thus, <span class="code">Some(user,</span>&nbsp;<span class="code">domain)</span> means the same as <span class="code">Some((user,</span>&nbsp;<span class="code">domain))</span>.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-annotations">Chapter 27</a></h2>
       <h1>Annotations</h1>
       <p>Annotations are structured information added to program source code. Like comments, they can be sprinkled throughout a program and attached to any variable, method, expression, or other program element. Unlike comments, they have structure, thus making them easier to machine process.</p>
@@ -12586,7 +12616,7 @@
       <p>This chapter described the platform-independent aspects of annotations that you will most commonly need to know about. First of all it covered the syntax of annotations, because using annotations is far more common than defining new ones. Second it showed how to use several annotations that are supported by the standard Scala compiler, including <span class="code">@deprecated</span>, <span class="code">@volatile</span>, <span class="code">@serializable</span>, <span class="code">@BeanProperty</span>, <span class="code">@tailrec</span>, and <span class="code">@unchecked</span>.</p>
       <p><a href="#chap-combining-scala-and-java">Chapter 31</a> gives additional, Java-specific information on annotations. It covers annotations only available when targeting Java, additional meanings of standard annotations when targeting Java, how to interoperate with Java-based annotations, and how to use Java-based mechanisms to define and process annotations in Scala.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-working-with-xml">Chapter 28</a></h2>
       <h1>Working with XML</h1>
       <p>This chapter introduces Scala's support for XML.<a id="i87031-1"></a> After discussing semi-structured data<a id="i-408699718-1"></a><a id="i-158920554-1"></a> in general, it shows the essential functionality in Scala for manipulating XML: how to make nodes with XML literals, how to save and load XML to files, and how to take apart XML nodes using query methods and pattern matching. This chapter is just a brief introduction to what is possible with XML, but it shows enough to get you started.</p>
@@ -12874,7 +12904,7 @@
       <p><a id="footnotemain28-1"></a>[1] There are type systems for XML, such as XML Schemas, but they are beyond the scope of this book.</p>
       <p><a id="footnotemain28-2"></a>[2] The full story is more complicated, but this is enough to be effective with XML.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-modular-programming-using-objects">Chapter 29</a></h2>
       <h1>Modular Programming Using Objects</h1>
       <p>In <a href="#chap-a-scalable-language">Chapter 1</a>, we claimed that one way Scala is a scalable language is that you can use the same techniques to construct small as well as large programs. So far in this book we've focused primarily on <em>programming in the small</em><a id="i-908480700-1"></a>: designing and implementing the smaller program pieces out of which you can construct a larger program.<a href="#footnotemain29-1">[1]</a> The other side of the story is <em>programming in the large</em><a id="i-915286664-1"></a>: organizing and assembling the smaller pieces into larger programs, applications, or systems. We touched on this subject when we discussed packages and access modifiers in <a href="#chap-packages-and-imports">Chapter 13</a>. In short, packages and access modifiers enable you to<a id="i-1777778106-1"></a> organize a large program using packages as <em>modules</em>, where a module is a "smaller program piece" with a well defined interface and a hidden implementation.<a id="i1227433863-1"></a></p>
@@ -13146,7 +13176,7 @@
       <p><a id="footnotemain29-4"></a>[4] These entity classes are simplified to keep the example uncluttered with too much real-world detail. But transforming these classes into entities that could be persisted with Hibernate<a id="i1100003378-1"></a> or the Java Persistence Architecture,<a id="i-1968727662-1"></a> for example, would require only a few modifications, such as adding a private <span class="code">Long</span> <span class="code">id</span> field and a no-arg constructor, placing <span class="code">scala.reflect.BeanProperty</span> annotations on the fields, specifying appropriate mappings via annotations or a separate XML file, and so on.<a id="i-146150294-1"></a></p>
       <p><a id="footnotemain29-5"></a>[5] This is good, because each of these architectural layers should depend only on layers below them.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-object-equality">Chapter 30</a></h2>
       <h1>Object Equality</h1>
       <p>Comparing two values for equality is ubiquitous in programming. It is also more tricky than it looks at first glance. This chapter looks at object equality in detail and gives some recommendations to consider when you design your own equality tests.</p>
@@ -13571,7 +13601,7 @@
       <p><a id="footnotemain30-7"></a>[7] Bloch, <em>Effective Java Second Edition</em>, p. 39 <a href="#bloch-effective-java">[Blo08]</a><a id="i-64318620-2"></a><a id="i166435877-1"></a></p>
       <p><a id="footnotemain30-8"></a>[8] Bloch, <em>Effective Java Second Edition</em>. <a href="#bloch-effective-java">[Blo08]</a><a id="i-64318620-3"></a><a id="i166435877-2"></a></p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-combining-scala-and-java">Chapter 31</a></h2>
       <h1>Combining Scala and Java</h1>
       <p>Scala code is often used in tandem with large Java programs and frameworks.<a id="i373161214-1"></a><a id="i1128780868-2"></a> Since Scala is highly compatible with Java, most of the time you can combine the languages without worrying very much. For example, standard frameworks, such as Swing, Servlets, and JUnit, are known to work just fine with Scala. Nonetheless, from time to time, you will run into some issue combining Java and Scala.</p>
@@ -13859,7 +13889,7 @@
       <p><a id="footnotemain31-2"></a>[2] The reason it all works is that the Java bytecode verifier does not check the declarations anyway! The Java compiler checks, but not the verifier.</p>
       <p><a id="footnotemain31-3"></a>[3] Starting with 2.12, Scala <span class="textit">requires</span> Java 8 so that it can take advantage of Java 8 features.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-futures-and-concurrency">Chapter 32</a></h2>
       <h1>Futures and Concurrency</h1>
       <p>One consequence of the proliferation of multicore processors has been an increased interest in concurrency. Java provides concurrency support built around shared memory and locking. Although this support is sufficient, this approach turns out to be quite difficult to get right in practice.<a id="i-1261817322-1"></a><a id="i-503567600-1"></a><a id="i-2146835927-1"></a> Scala's standard library offers an alternative that avoids these difficulties by focusing on asynchronous transformations of immutable state: the <span class="code">Future</span>.</p>
@@ -14310,7 +14340,7 @@
       <p><a id="footnotemain32-2"></a>[2] Note that the Java <span class="code">Future</span> also has a way to deal with the potential of an exception being thrown by the asynchronous computation: its <span class="code">get</span> method will throw that exception wrapped in an <span class="code">ExecutionException</span>.</p>
       <p><a id="footnotemain32-3"></a>[3] The <span class="code">for</span> expression shown in this example will be rewritten as a call to <span class="code">fut1.flatMap</span> passing in a function that calls <span class="code">fut2.map</span>: <span class="code">fut1.flatMap(x</span>&nbsp;<span class="code">=&gt;</span>&nbsp;<span class="code">fut2.map(y</span>&nbsp;<span class="code">=&gt;</span>&nbsp;<span class="code">x</span>&nbsp;<span class="code">+</span>&nbsp;<span class="code">y))</span>.</p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-combinator-parsing">Chapter 33</a></h2>
       <h1>Combinator Parsing</h1>
       <p>Occasionally, you may need to process a small, special-purpose language.<a id="i1395246279-1"></a> For example, you may need to read configuration files for your software, and you want to make them easier to modify by hand than XML. Alternatively, maybe you want to support an input language in your program, such as search terms with boolean operators (computer, find me a movie "with `space ships' and without `love stories"'). Whatever the reason, you are going to need a <em>parser</em>.<a id="i-792967116-1"></a> You need a way to convert the input language into some data structure your software can process.</p>
@@ -14906,7 +14936,7 @@
       <p><a id="footnotemain33-2"></a>[2] Aho, <i>et. al.</i>, <em>Compilers: Principles, Techniques, and Tools</em>. <a href="#aho-sethi-ullman">[Aho86]</a><a id="i1109104818-2"></a></p>
       <p><a id="footnotemain33-3"></a>[3] Aho, <i>et. al.</i>, <em>Compilers: Principles, Techniques, and Tools</em>. <a href="#aho-sethi-ullman">[Aho86]</a><a id="i-1383802058-1"></a></p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-gui-programming">Chapter 34</a></h2>
       <h1>GUI Programming</h1>
       <p>In this chapter you'll learn how to develop in Scala applications that use a graphical user interface (GUI). The applications we'll develop are based on a Scala library that provides access to Java's Swing framework of GUI classes.<a id="i80301790-1"></a><a id="i1756438818-1"></a> Conceptually, the Scala library resembles the underlying Swing classes, but hides much of their complexity. You'll find out that developing GUI applications using the framework is actually quite easy.<a id="i1275390415-1"></a></p>
@@ -15101,7 +15131,7 @@
       <h4>Footnotes for Chapter 34:</h4>
       <p><a id="footnotemain34-1"></a>[1] See, for instance, <em>The Java Tutorials</em>. <a href="#JavaTutorials">[Jav]</a></p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h2><a id="chap-the-scells-spreadsheet">Chapter 35</a></h2>
       <h1>The <span class="code">SCells</span> Spreadsheet</h1>
       <p>In the previous chapters you saw many different constructs of the Scala programming language. In this chapter you'll see how these constructs play together in the implementation of a sizable application. The task is to write a spreadsheet application, which will be named <span class="code">SCells</span>.<a id="i-1325982169-1"></a></p>
@@ -15522,7 +15552,7 @@
       <p><a id="footnotemain35-2"></a>[2] <span class="code">Range[Int]</span> is also the type of a Scala expression such as "<span class="code">1</span>&nbsp;<span class="code">to</span>&nbsp;<span class="code">N</span>".</p>
       <p><a id="footnotemain35-3"></a>[3] This assumes that there are no cyclic dependencies between cells. We discuss dropping this assumption at the end of this chapter.</p>
     </div>
-    <div class="annotator-wrapper">
+    <div class="h annotator-wrapper">
       <h2><a id="appen-scala-scripts-on-unix-and-windows">Appendix A</a></h2>
       <h1>Scala Scripts on Unix and Windows</h1>
       <p>If you're on some flavor of Unix, you can run a Scala script as a shell script by prepending a "pound bang" directive at the top of the file.<a id="i345477272-1"></a> For example, type the following into a file named <span class="code">helloarg</span>:</p> <pre>  #!/bin/sh
@@ -15542,7 +15572,7 @@
   ::!#
 </pre>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h1><a id="glossaryanchor">Glossary</a></h1>
       <div id="glossary">
         <p> <a id="g-725411438"></a><span class="glossaryname">algebraic data type</span>&nbsp;&nbsp; A type defined by providing several alternatives, each of which comes with its own constructor. It usually comes with a way to decompose the type through pattern matching. The concept is found in specification languages and functional programming languages. Algebraic data types can be emulated in Scala with case classes. </p>
@@ -15669,7 +15699,7 @@
         <p> <a id="g114974605"></a><span class="glossaryname">yield</span>&nbsp;&nbsp; An expression can <em>yield</em> a result. The <span class="code">yield</span> keyword designates the result of a <span class="code">for</span> expression. </p>
       </div>
     </div>
-    <div class="annotator-wrapper">
+    <div class="h annotator-wrapper">
       <h1><a id="biblioanchor">Bibliography</a></h1>
       <div id="bibliography"> <!-- This document was automatically generated with bibtex2html 1.99
      (see http://www.lri.fr/~filliatr/bibtex2html/),
@@ -15793,7 +15823,7 @@
         </table>
       </div>
     </div>
-    <div class="annotator-wrapper">
+    <div class="h annotator-wrapper">
       <h2><a id="chap-about-the-authors"></a></h2>
       <h1>About the Authors</h1>
       <p><span class="textbf">Martin Odersky</span> is the creator of the Scala language. He is a professor at EPFL in Lausanne, Switzerland, and a founder of Lightbend, Inc. He works on programming languages and systems, more specifically on the topic of how to combine object-oriented and functional programming. Since 2001 he has concentrated on designing, implementing, and refining Scala. Previously, he has influenced the development of Java as a co-designer of Java generics and as the original author of the current <span class="code">javac</span> reference compiler. He is a fellow of the ACM.</p>
@@ -15801,7 +15831,7 @@
       <p><span class="textbf">Bill Venners</span> is president of Artima, Inc., publisher of the Artima website (www.artima.com) and provider of Scala consulting, training, books, and tools. He is author of the book, <em>Inside the Java Virtual Machine</em>, a programmer-oriented survey of the Java platform's architecture and internals. His popular columns in JavaWorld magazine covered Java internals, object-oriented design, and Jini. Bill is a community representative on the Scala Center advisory board, and is the lead developer and designer of the ScalaTest test framework and the Scalactic library for functional, object-oriented programming.</p>
       <p><a id="theIndex"></a></p>
     </div>
-    <div class="annotator-wrapper cover">
+    <div class="h annotator-wrapper cover">
       <h1><a id="indexanchor">Index</a></h1>
       <div id="index">
         <br> <a href="#iia" class="totri-footnote">a</a> <a href="#iib" class="totri-footnote">b</a> <a href="#iic" class="totri-footnote">c</a> <a href="#iid" class="totri-footnote">d</a> <a href="#iie" class="totri-footnote">e</a> <a href="#iif" class="totri-footnote">f</a> <a href="#iig" class="totri-footnote">g</a> <a href="#iih" class="totri-footnote">h</a> <a href="#iii" class="totri-footnote">i</a> <a href="#iij" class="totri-footnote">j</a> <a href="#iik" class="totri-footnote">k</a> <a href="#iil" class="totri-footnote">l</a> <a href="#iim" class="totri-footnote">m</a> <a href="#iin" class="totri-footnote">n</a> <a href="#iio" class="totri-footnote">o</a> <a href="#iip" class="totri-footnote">p</a> <a href="#iiq" class="totri-footnote">q</a> <a href="#iir" class="totri-footnote">r</a> <a href="#iis" class="totri-footnote">s</a> <a href="#iit" class="totri-footnote">t</a> <a href="#iiu" class="totri-footnote">u</a> <a href="#iiv" class="totri-footnote">v</a> <a href="#iiw" class="totri-footnote">w</a> <a href="#iix" class="totri-footnote">x</a> <a href="#iiy" class="totri-footnote">y</a> <a href="#iiz" class="totri-footnote">z</a>
