@@ -444,7 +444,7 @@
       <p>Function definitions start with <span class="code">def</span>.<a id="i1764649166-1"></a> The function's name, in this case <span class="code">max</span>, is followed by a comma-separated list of parameters in parentheses. A type annotation must follow every function parameter, preceded by a colon, because the Scala compiler (and interpreter, but from now on we'll just say compiler) does not infer function parameter types. In this example, the function named <span class="code">max</span> takes two parameters, <span class="code">x</span> and <span class="code">y</span>, both of type <span class="code">Int</span>. After the close parenthesis of <span class="code">max</span>'s parameter list you'll find another "<span class="code">:</span>&nbsp;<span class="code">Int</span>" type annotation. This one defines the <a href="#g-595246755"><em>result type</em></a> of<a id="i-595246755-1"></a><a id="i-1437134274-1"></a> the <span class="code">max</span> function itself.<a href="#footnotemain2-6">[6]</a> Following the function's result type is an equals sign and pair of curly braces that contain the body of the function. In this case, the body contains a single <span class="code">if</span> expression,<a id="i-1395149224-1"></a> which selects either <span class="code">x</span> or <span class="code">y</span>, whichever is greater, as the result of the <span class="code">max</span> function. As demonstrated here, Scala's <span class="code">if</span> expression can result in a value, similar to Java's ternary operator. For example, the Scala expression "<span class="code">if</span>&nbsp;<span class="code">(x</span>&nbsp;<span class="code">&gt;</span>&nbsp;<span class="code">y)</span>&nbsp;<span class="code">x</span>&nbsp;<span class="code">else</span>&nbsp;<span class="code">y</span>" behaves similarly to "<span class="code">(x</span>&nbsp;<span class="code">&gt;</span>&nbsp;<span class="code">y)</span>&nbsp;<span class="code">?</span>&nbsp;<span class="code">x</span>&nbsp;<span class="code">:</span>&nbsp;<span class="code">y</span>" in Java. The equals sign that precedes the body of a function hints that in the functional world view, a function defines an expression that results in a value. The basic structure of a function is illustrated in <a href="#fig-method-form">Figure 2.1</a>.</p>
       <div class="figure">
         <a id="fig-method-form"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/methodForm144.png" alt="images/methodForm144.png"></p>
+        <p><img src="methodForm144.png" alt="images/methodForm144.png"></p>
       </div>
       <h5> Figure 2.1 - The basic form of a function definition in Scala.<a id="i-1058128094-1"></a></h5>
       <p>Sometimes the Scala compiler will require you to specify the result type of a function. If the function is <a href="#g1165780018"><em>recursive</em></a>,<a href="#footnotemain2-7">[7]</a> for example, you must explicitly specify the function's result type. In the case of <span class="code">max</span>, however, you may leave the result type off and the compiler will infer it.<a href="#footnotemain2-8">[8]</a> Also, if a function consists of just one statement, you can optionally leave off the curly braces. Thus, you could alternatively write the <span class="code">max</span> function like this:</p> <pre>  scala&gt;&nbsp;<code class="vem">def</code>&nbsp;max(x:&nbsp;<code class="typename">Int</code>,&nbsp;y:&nbsp;<code class="typename">Int</code>)&nbsp;=&nbsp;<code class="vem">if</code>&nbsp;(x&nbsp;&gt;&nbsp;y)&nbsp;x&nbsp;<code class="vem">else</code>&nbsp;y
@@ -533,7 +533,7 @@
       <p>To summarize, the syntax for a function literal is a list of named parameters, in parentheses, a right arrow, and then the body of the function. This syntax is illustrated in <a href="#fig-function-literal">Figure 2.2</a>.</p>
       <div class="figure">
         <a id="fig-function-literal"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/functionLiteral96.png" alt="images/functionLiteral96.png"></p>
+        <p><img src="functionLiteral96.png" alt="images/functionLiteral96.png"></p>
       </div>
       <h5> Figure 2.2 - The syntax of a function literal in Scala.<a id="i-995341786-1"></a></h5>
       <p>Now, by this point you may be wondering what happened to those trusty <span class="code">for</span> loops you have been accustomed to using in imperative languages, such as Java or C. In an effort to guide you in a functional direction, only a functional relative of the imperative <span class="code">for</span> (called a <em><span class="code">for</span> expression</em>) is available in Scala.<a id="i-207940604-1"></a> While you won't see their full power and expressiveness until you reach (or peek ahead to) <a href="#sec-for-expressions">Section 7.3</a>, we'll give you a glimpse here. In a new file named <span class="code">forargs.scala</span>, type the following:</p> <pre>  <code class="vem">for</code>&nbsp;(arg&nbsp;&lt;-&nbsp;args)
@@ -600,7 +600,7 @@
       <p>Scala doesn't technically have operator overloading,<a id="i-189261806-1"></a><a id="i2049320438-1"></a> because it doesn't actually have operators in the traditional sense. Instead, characters such as <span class="code">+</span>, <span class="code">-</span>, <span class="code">*</span>, and <span class="code">/</span> can be used in method names. Thus, when you typed <span class="code">1</span>&nbsp;<span class="code">+</span>&nbsp;<span class="code">2</span> into the Scala interpreter in Step 1, you were actually invoking a method named <span class="code">+</span> on the <span class="code">Int</span> object <span class="code">1</span>, passing in <span class="code">2</span> as a parameter. As illustrated in <a href="#fig-operator-notation">Figure 3.1</a>, you could alternatively have written <span class="code">1</span>&nbsp;<span class="code">+</span>&nbsp;<span class="code">2</span> using traditional method invocation syntax, <span class="code">(1).+(2)</span>.</p>
       <div class="figure">
         <a id="fig-operator-notation"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/operatorNotation80.png" alt="images/operatorNotation80.png"></p>
+        <p><img src="operatorNotation80.png" alt="images/operatorNotation80.png"></p>
       </div>
       <h5> Figure 3.1 - All operations are method calls in Scala.</h5>
       <p>Another important idea illustrated by this example will give you insight into why arrays are accessed with parentheses<a id="i580437291-1"></a> in Scala. Scala has fewer special cases than Java. Arrays are simply instances of classes like any other class in Scala. When you apply parentheses surrounding one or more values to a variable, Scala will transform the code into an invocation of a method named <span class="code">apply</span><a id="i1032551708-1"></a><a id="i-760757566-1"></a> on that variable. So <span class="code">greetStrings(i)</span> gets transformed into <span class="code">greetStrings.apply(i)</span>. Thus accessing an element of an array in Scala is simply a method call like any other.<a id="i-1841919811-1"></a> This principle is not restricted to arrays: any application of an object to some arguments in parentheses will be transformed to an <span class="code">apply</span> method call. Of course this will compile only if that type of object actually defines an <span class="code">apply</span> method. So it's not a special case; it's a general rule.</p>
@@ -790,7 +790,7 @@
       <h5>Listing 3.5 - Creating, initializing, and using an immutable set.<a id="i1504035872-1"></a></h5>
       <div class="figure">
         <a id="fig-set-hierarchy"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/sets85.png" alt="images/sets85.png"></p>
+        <p><img src="sets85.png" alt="images/sets85.png"></p>
       </div>
       <h5> Figure 3.2 - Class hierarchy for Scala sets.<a id="i-1161517801-1"></a><a id="i894901459-1"></a><a id="i-702923198-1"></a></h5>
       <p>In the first line of code in <a href="#lst-init-immutable-set">Listing 3.5</a>, you define a new <span class="code">var</span> named <span class="code">jetSet</span> and initialize it with an immutable set containing the two strings, <span class="code">"Boeing"</span> and <span class="code">"Airbus"</span>. As this example shows, you can create sets in Scala similarly to how you create lists and arrays: by invoking a factory method named <span class="code">apply</span> on a <span class="code">Set</span> companion object. In <a href="#lst-init-immutable-set">Listing 3.5</a>, you invoke <span class="code">apply</span> on the companion object for <span class="code">scala.collection.immutable.Set</span>, which returns an instance of a default, immutable <span class="code">Set</span>. The Scala compiler infers <span class="code">jetSet</span>'s type to be the immutable <span class="code">Set[String]</span>.</p>
@@ -813,7 +813,7 @@
       <p>Another<a id="i3344023-1"></a> useful collection trait in Scala is <span class="code">Map</span>. As with sets, Scala provides mutable and<a id="i-2121468463-1"></a> immutable versions of <span class="code">Map</span>, using a class hierarchy. As you can see in <a href="#fig-map-hierarchy">Figure 3.3</a>, the class hierarchy for maps looks a lot like the one for sets. There's a base <span class="code">Map</span> trait in package <span class="code">scala.collection</span>, and two subtrait <span class="code">Map</span>s: a mutable <span class="code">Map</span> in <span class="code">scala.collection.mutable</span> and an immutable one in <span class="code">scala.collection.immutable</span>.</p>
       <div class="figure">
         <a id="fig-map-hierarchy"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/maps85.png" alt="images/maps85.png"></p>
+        <p><img src="maps85.png" alt="images/maps85.png"></p>
       </div>
       <h5> Figure 3.3 - Class hierarchy for Scala maps.<a id="i691333469-1"></a><a id="i-335955175-1"></a><a id="i-703105912-1"></a></h5>
       <p>Implementations of <span class="code">Map</span>, such as the <span class="code">HashMap</span>s shown in the class hierarchy in <a href="#fig-map-hierarchy">Figure 3.3</a>, extend either the mutable or immutable trait. You can create and initialize maps using factory methods similar to those used for arrays, lists, and sets.</p>
@@ -981,13 +981,13 @@
 </pre>
       <p>The image of the objects in memory might look like this:</p>
       <div style="text-align: center">
-        <img src="/library/view/programming-in-scala/9780981531618/images/cc0dd0160.png" alt="images/cc0dd0160.png">
+        <img src="cc0dd0160.png" alt="images/cc0dd0160.png">
       </div>
       <p>Since <span class="code">sum</span>, a field declared inside class <span class="code">ChecksumAccumulator</span>, is a <span class="code">var</span>, not a <span class="code">val</span>, you can later reassign to <span class="code">sum</span> a different <span class="code">Int</span> value, like this:</p> <pre>  acc.sum&nbsp;=&nbsp;<code class="literal">3</code>
 </pre>
       <p>Now the picture would look like this:</p>
       <div style="text-align: center">
-        <img src="/library/view/programming-in-scala/9780981531618/images/cc3dd0160.png" alt="images/cc3dd0160.png">
+        <img src="cc3dd0160.png" alt="images/cc3dd0160.png">
       </div>
       <p>One thing to notice about this picture is that there are two <span class="code">sum</span> variables, one in the object referenced by <span class="code">acc</span> and the other in the object referenced by <span class="code">csa</span>. Fields are also known as <em>instance variables</em>,<a id="i-1571995732-1"></a><a id="i-813534408-1"></a> because every instance gets its own set of the variables. Collectively, an object's instance variables make up the memory image of the object. You see this illustrated here not only in that you see two <span class="code">sum</span> variables, but also that when you changed one, the other was unaffected.</p>
       <p>Another thing to note in this example is that you were able to mutate the object <span class="code">acc</span> referred to, even though <span class="code">acc</span> is a <span class="code">val</span>. What you can't do with <span class="code">acc</span> (or <span class="code">csa</span>), given that they are <span class="code">val</span>s, not <span class="code">var</span>s, is reassign a different object to them. For example, the following attempt would fail:</p> <pre>  <code class="comment">//&nbsp;Won't&nbsp;compile,&nbsp;because&nbsp;acc&nbsp;is&nbsp;a&nbsp;val</code>
@@ -1092,7 +1092,7 @@
 </pre>
       <p>A singleton object is more than a holder of static methods, however. It is a first-class object. You can think of a singleton object's name, therefore, as a "name tag" attached to the object:</p>
       <div style="text-align: center">
-        <img src="/library/view/programming-in-scala/9780981531618/images/csaObject160.png" alt="images/csaObject160.png">
+        <img src="csaObject160.png" alt="images/csaObject160.png">
       </div>
       <p>Defining a singleton object doesn't define a type (at the Scala level of abstraction). Given just a definition of object <span class="code">ChecksumAccumulator</span>, you can't make a variable of type <span class="code">ChecksumAccumulator</span>. Rather, the type named <span class="code">ChecksumAccumulator</span> is defined by the singleton object's companion class. However, singleton objects extend a superclass and can mix in traits. Given each singleton object is an instance of its superclasses and mixed-in traits, you can invoke its methods via these types, refer to it from variables of these types, and pass it to methods expecting these types. We'll show some examples of singleton objects inheriting from classes and traits in <a href="#chap-packages-and-imports">Chapter 13</a>.</p>
       <p>One difference between classes and singleton objects is that singleton<a id="i-614433232-1"></a> objects cannot take parameters, whereas classes can. Because you can't instantiate a singleton object with the <span class="code">new</span> keyword, you have no way to pass parameters to it. Each singleton object is implemented as<a id="i-1705632190-1"></a><a id="i1357897992-1"></a> an instance of a <a href="#g1908038877"><em>synthetic class</em></a> referenced from a static variable, so they have the same initialization semantics as Java statics.<a href="#footnotemain4-4">[4]</a> In particular, a singleton object is initialized the first time some code accesses it.</p>
@@ -3160,7 +3160,7 @@
 </pre>
       <div class="figure">
         <a id="fig-element-family"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/ArrayElement160.png" alt="images/ArrayElement160.png"></p>
+        <p><img src="ArrayElement160.png" alt="images/ArrayElement160.png"></p>
       </div>
       <h5> Figure 10.1 - Class diagram for <span class="code">ArrayElement</span>.</h5>
       <p>Such an extends clause has two effects: It makes class <span class="code">ArrayElement</span> <span style="font-style:italic">inherit</span> all non-private members from class <span class="code">Element</span>, and it makes the type <span class="code">ArrayElement</span> a <span style="font-style:italic">subtype</span> of the type <span class="code">Element</span>. Given <span class="code">ArrayElement</span> extends <span class="code">Element</span>, class <span class="code">ArrayElement</span> is called a <span style="font-style:italic"> subclass</span> of class <span class="code">Element</span>.<a id="i-1485346100-1"></a> Conversely, <span class="code">Element</span> is a <em>superclass</em> of <span class="code">ArrayElement</span>.<a id="i1436252235-1"></a> If you leave out an <span class="code">extends</span> clause, the Scala compiler implicitly assumes your class extends from <span class="code">scala.AnyRef</span>, which on the Java platform is the same as class <span class="code">java.lang.Object</span>. Thus, class <span class="code">Element</span> implicitly extends class <span class="code">AnyRef</span>. You can see these inheritance relationships in <a href="#fig-element-family">Figure 10.1</a>.</p>
@@ -3240,7 +3240,7 @@
       <p>With the new subclass, the inheritance hierarchy for layout elements now looks as shown in <a href="#fig-line-element">Figure 10.2</a>.</p>
       <div class="figure">
         <a id="fig-line-element"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/LineElement160.png" alt="images/LineElement160.png"></p>
+        <p><img src="LineElement160.png" alt="images/LineElement160.png"></p>
       </div>
       <h5> Figure 10.2 - Class diagram for <span class="code">LineElement</span>.</h5>
       <h3 id="sec-using-override-modifiers">10.8 Using <span class="code">override</span> modifiers</h3>
@@ -3281,7 +3281,7 @@
       <p>If you check the inheritance hierarchy, you'll find that in each of these four <span class="code">val</span> definitions, the type of the expression to the right of the equals sign is below the type of the <span class="code">val</span> being initialized to the left of the equals sign.</p>
       <div class="figure">
         <a id="fig-layout-elements"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/elementFamily160.png" alt="images/elementFamily160.png"></p>
+        <p><img src="elementFamily160.png" alt="images/elementFamily160.png"></p>
       </div>
       <h5> Figure 10.3 - Class hierarchy of layout elements.</h5>
       <p>The other half of the story, however, is that method invocations on variables and expressions are <em>dynamically bound</em>.<a id="i-1297249718-1"></a> This means that the actual method implementation invoked is determined at run time based on the class of the object, not the type of the variable or expression. To demonstrate this behavior, we'll temporarily remove all existing members from our <span class="code">Element</span> classes and add a method named <span class="code">demo</span> to <span class="code">Element</span>. We'll override <span class="code">demo</span> in <span class="code">ArrayElement</span> and <span class="code">LineElement</span>, but not in <span class="code">UniformElement</span>:</p> <pre>  <code class="vem">abstract</code>&nbsp;<code class="vem">class</code>&nbsp;<code class="typename">Element</code>&nbsp;{
@@ -3358,7 +3358,7 @@
       <p>In the previous version, <span class="code">LineElement</span> had an inheritance relationship with <span class="code">ArrayElement</span>, from which it inherited <span class="code">contents</span>. It now has a composition relationship with <span class="code">Array</span>: it holds a reference to an array of strings from its own <span class="code">contents</span> field.<a href="#footnotemain10-10">[10]</a> Given this implementation of <span class="code">LineElement</span>, the inheritance hierarchy for <span class="code">Element</span> now looks as shown in <a href="#fig-new-line-element">Figure 10.4</a>.</p>
       <div class="figure">
         <a id="fig-new-line-element"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/elementFamily2160.png" alt="images/elementFamily2160.png"></p>
+        <p><img src="elementFamily2160.png" alt="images/elementFamily2160.png"></p>
       </div>
       <h5> Figure 10.4 - Class hierarchy with revised <span class="code">LineElement</span>.</h5>
       <h3 id="sec-impl-above-beside-tostring">10.12 Implementing <span class="code">above</span>, <span class="code">beside</span>, and <span class="code">toString</span></h3>
@@ -3593,7 +3593,7 @@
       <p>Because every class inherits from <span class="code">Any</span>, every object in a Scala program can be compared using<a id="i-1583721442-2"></a><a id="i1095465388-2"></a><a id="i15383763-2"></a><a id="i-1108611945-2"></a> <span class="code">==</span>, <span class="code">!=</span>, or <span class="code">equals</span>; hashed using <span class="code">##</span> or <span class="code">hashCode</span>; and<a id="i1926521799-1"></a> formatted using <span class="code">toString</span>.<a id="i-1787342122-1"></a><a id="i-720005867-2"></a> The equality and inequality methods, <span class="code">==</span> and <span class="code">!=</span>, are declared <span class="code">final</span> in class <span class="code">Any</span>, so they cannot be overridden in subclasses. The <span class="code">==</span> method is essentially the same as <span class="code">equals</span> and <span class="code">!=</span><a id="i-1939382283-1"></a> is always the negation of <span class="code">equals</span>.<a href="#footnotemain11-1">[1]</a> So individual classes can tailor what <span class="code">==</span> or <span class="code">!=</span> means by overriding the <span class="code">equals</span> method. We'll show an example later in this chapter.</p>
       <p><a id="fig-class-hierarchy"></a></p>
       <div style="text-align: center">
-        <img src="/library/view/programming-in-scala/9780981531618/images/scalaHierarchy160.png" alt="images/scalaHierarchy160.png">
+        <img src="scalaHierarchy160.png" alt="images/scalaHierarchy160.png">
         <h5>Class hierarchy of Scala.<a id="i-395909855-1"></a><a id="i1570311014-1"></a><a id="i1398855960-1"></a><a id="i1276473496-1"></a><a id="i-1121985306-1"></a><a id="i2002716718-1"></a><a id="i695215832-1"></a><a id="i-345413291-1"></a></h5>
       </div>
       <p>The root class <span class="code">Any</span> has two subclasses: <span class="code">AnyVal</span> and <span class="code">AnyRef</span>. <span class="code">AnyVal</span> is the parent class of <span style="font-style:italic">value classes</span> in Scala.<a id="i-20487049-1"></a><a id="i499600205-1"></a><a id="i785702719-1"></a><a id="i-2060175836-1"></a> While you can define your own value classes (see <a href="#sec-value-classes">Section 11.4</a>), there are nine value classes built into Scala: <span class="code">Byte</span>, <span class="code">Short</span>, <span class="code">Char</span>, <span class="code">Int</span>, <span class="code">Long</span>, <span class="code">Float</span>, <span class="code">Double</span>, <span class="code">Boolean</span>, and <span class="code">Unit</span>. The first eight of these correspond to Java's primitive types, and their values are<a id="i884498802-3"></a> represented at run time as Java's primitive values. The instances of these classes are all written as literals in Scala. For example, <span class="code">42</span> is an instance of <span class="code">Int</span>, <span class="code">'x'</span> is an instance of <span class="code">Char</span>, and <span class="code">false</span> an instance of <span class="code">Boolean</span>. You cannot create instances of these classes using <span class="code">new</span>. This is enforced by the "trick" that value classes are all defined to be both abstract and final.</p>
@@ -4053,24 +4053,24 @@
       <p>Class <span class="code">Cat</span>'s inheritance hierarchy and linearization are shown in <a href="#fig-linearization">Figure 12.1</a>. Inheritance is indicated using traditional UML notation:<a href="#footnotemain12-3">[3]</a> arrows with white, triangular arrowheads indicate inheritance, with the arrowhead pointing to the supertype. The arrows with darkened, non-triangular arrowheads depict linearization. The darkened arrowheads point in the direction in which <span class="code">super</span> calls will be resolved.</p>
       <div class="figure">
         <a id="fig-linearization"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/linearization160.png" alt="images/linearization160.png"></p>
+        <p><img src="linearization160.png" alt="images/linearization160.png"></p>
       </div>
       <h5> Figure 12.1 - Inheritance hierarchy and linearization of class <span class="code">Cat</span>.</h5>
       <p>The linearization of <span class="code">Cat</span> is computed from back to front as follows. The <span style="font-style:italic">last</span> part of the linearization of <span class="code">Cat</span> is the linearization of its superclass, <span class="code">Animal</span>. This linearization is copied over without any changes. (The linearization of each of these types is shown in <a href="#tab-linearization-several">Table 12.1</a> <a href="#tab-linearization-several">here</a>.) Because <span class="code">Animal</span> doesn't explicitly extend a superclass or mix in any supertraits, it by default extends <span class="code">AnyRef</span>, which extends <span class="code">Any</span>. <span class="code">Animal</span>'s linearization, therefore, looks like:</p>
       <div style="text-align: center">
-        <img src="/library/view/programming-in-scala/9780981531618/images/AnimalLine160.png" alt="images/AnimalLine160.png">
+        <img src="AnimalLine160.png" alt="images/AnimalLine160.png">
       </div>
       <p>The second to last part is the linearization of the first mixin, trait <span class="code">Furry</span>, but all classes that are already in the linearization of <span class="code">Animal</span> are left out now, so that each class appears only once in <span class="code">Cat</span>'s linearization. The result is:</p>
       <div style="text-align: center">
-        <img src="/library/view/programming-in-scala/9780981531618/images/FurryLine160.png" alt="images/FurryLine160.png">
+        <img src="FurryLine160.png" alt="images/FurryLine160.png">
       </div>
       <p>This is preceded by the linearization of <span class="code">FourLegged</span>, where again any classes that have already been copied in the linearizations of the superclass or the first mixin are left out:</p>
       <div style="text-align: center">
-        <img src="/library/view/programming-in-scala/9780981531618/images/FourLeggedLine160.png" alt="images/FourLeggedLine160.png">
+        <img src="FourLeggedLine160.png" alt="images/FourLeggedLine160.png">
       </div>
       <p>Finally, the first class in the linearization of <span class="code">Cat</span> is <span class="code">Cat</span> itself:</p>
       <div style="text-align: center">
-        <img src="/library/view/programming-in-scala/9780981531618/images/CatLine160.png" alt="images/CatLine160.png">
+        <img src="CatLine160.png" alt="images/CatLine160.png">
       </div>
       <p>When any of these classes and traits invokes a method via <span class="code">super</span>, the implementation invoked will be the first implementation to its right in the linearization.</p>
       <p><a id="tab-linearization-several"></a></p>
@@ -4651,7 +4651,7 @@
 </pre>
       <div class="figure">
         <a id="fig-scalatest-gui"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/scalaTestOutput53.png" alt="images/scalaTestOutput53.png"></p>
+        <p><img src="scalaTestOutput53.png" alt="images/scalaTestOutput53.png"></p>
       </div>
       <h5> Figure 14.1 - The output of <span class="code">org.scalatest.run</span>.</h5>
       <p>With <span class="code">-cp</span> you place the <span class="code">scalatest-app</span> and <span class="code">scala-xml</span> JAR files on the class path. (When downloaded, the JAR file names will include embedded version numbers.) The next token, <span class="code">org.scalatest.run</span>, is the fully qualified application name. Scala will run this application and pass the remaining tokens as command line arguments. The <span class="code">TVSetSpec</span> argument specifies the suite to execute. The result is shown in <a href="#fig-scalatest-gui">Figure 14.1</a>.</p>
@@ -5782,7 +5782,7 @@
       </div>
       <p>Or, graphically:</p>
       <div style="text-align: center">
-        <img src="/library/view/programming-in-scala/9780981531618/images/optree1160.png" alt="images/optree1160.png">
+        <img src="optree1160.png" alt="images/optree1160.png">
       </div>
       <p>Here's another example that illustrates how <span class="code">foldLeft</span> is used. To concatenate all words in a list of strings with spaces between them and in front, you can write this:</p> <pre>  scala&gt;&nbsp;&nbsp;words.foldLeft(<code class="quotedstring">""</code>)(_&nbsp;+&nbsp;<code class="quotedstring">"&nbsp;"</code>&nbsp;+&nbsp;_)
   <code class="output">res49:&nbsp;String&nbsp;=&nbsp;"&nbsp;the&nbsp;quick&nbsp;brown&nbsp;fox"</code>
@@ -5796,7 +5796,7 @@
       </div>
       <p>Or, graphically:</p>
       <div style="text-align: center">
-        <img src="/library/view/programming-in-scala/9780981531618/images/optree2160.png" alt="images/optree2160.png">
+        <img src="optree2160.png" alt="images/optree2160.png">
       </div>
       <p>For associative operations, fold left and fold right are equivalent, but there might be a difference in efficiency.<a id="i-1099454431-1"></a> Consider for instance an operation corresponding to the <span class="code">flatten</span> method, which concatenates all elements in a list of lists.<a id="i-652692760-1"></a><a id="i364853848-2"></a> This could be implemented with either fold left or fold right:</p> <pre>  <code class="vem">def</code>&nbsp;flattenLeft[T](xss:&nbsp;<code class="typename">List[List[T]]</code>)&nbsp;=
   &nbsp;&nbsp;&nbsp;&nbsp;xss.foldLeft(<code class="typename">List[T]</code>())(_&nbsp;:::&nbsp;_)
@@ -6673,7 +6673,7 @@
       </div>
       <div class="figure">
         <a id="fig-gates"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/basicgates160.png" alt="images/basicgates160.png"></p>
+        <p><img src="basicgates160.png" alt="images/basicgates160.png"></p>
       </div>
       <h5> Figure 18.1 - Basic gates.</h5>
       <h3 id="sec-language-circuits">18.4 A language for digital circuits</h3>
@@ -6708,7 +6708,7 @@
       <h5>Listing 18.6 - The <span class="code">halfAdder</span> method.</h5>
       <div class="figure">
         <a id="fig-half-adder"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/halfadder160.png" alt="images/halfadder160.png"></p>
+        <p><img src="halfadder160.png" alt="images/halfadder160.png"></p>
       </div>
       <h5> Figure 18.2 - A half-adder circuit.</h5>
       <p>Note that <span class="code">halfAdder</span> is a parameterized function box just like the three methods that construct the primitive gates. You can use the <span class="code">halfAdder</span> method to construct more complicated circuits. For instance, <a href="#lst-full-adder">Listing 18.7</a> defines a full, one-bit adder, shown in <a href="#fig-full-adder">Figure 18.3</a>, which takes two inputs, <span class="code">a</span> and <span class="code">b</span>, as well as a carry-in, <span class="code">cin</span>, and which produces a sum output defined by "<span class="code">sum</span>&nbsp;<span class="code">=</span>&nbsp;<span class="code">(a</span>&nbsp;<span class="code">+</span>&nbsp;<span class="code">b</span>&nbsp;<span class="code">+</span>&nbsp;<span class="code">cin)</span>&nbsp;<span class="code"><span class="texttt">%</span></span>&nbsp;<span class="code">2</span>" and a carry-out output defined by "<span class="code">cout</span>&nbsp;<span class="code">=</span>&nbsp;<span class="code">(a</span>&nbsp;<span class="code">+</span>&nbsp;<span class="code">b</span>&nbsp;<span class="code">+</span>&nbsp;<span class="code">cin)</span>&nbsp;<span class="code">/</span>&nbsp;<span class="code">2</span>".</p>
@@ -6724,7 +6724,7 @@
       <p>Class <span class="code">Wire</span> and functions <span class="code">inverter</span>, <span class="code">andGate</span>, and <span class="code">orGate</span> represent a little language with which users can define digital circuits. It's a good example of an <em>internal</em> DSL, a domain-specific language defined as a library in a host language instead of being implemented on its own.</p>
       <div class="figure">
         <a id="fig-full-adder"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/fulladder160.png" alt="images/fulladder160.png"></p>
+        <p><img src="fulladder160.png" alt="images/fulladder160.png"></p>
       </div>
       <h5> Figure 18.3 - A full-adder circuit.</h5>
       <p>The implementation of the circuit DSL still needs to be worked out. Since the purpose of defining a circuit in the DSL is simulating the circuit, it makes sense to base the DSL implementation on a general API for discrete event simulation. The next two sections will present first the simulation API and then the implementation of the circuit DSL on top of it.</p>
@@ -7316,7 +7316,7 @@
       <p>The code in <a href="#lst-parrot-contravariance">Listing 19.9</a> compiles because <span class="code">Publication</span>&nbsp;<span class="code">=&gt;</span>&nbsp;<span class="code">String</span> is a subtype of <span class="code">Book</span>&nbsp;<span class="code">=&gt;</span>&nbsp;<span class="code">AnyRef</span>, as shown in the center of the <a href="#fig-contravariance">Figure 19.1</a>. Because the result type of a <span class="code">Function1</span> is defined as covariant, the inheritance relationship of the two result types, shown at the right of the diagram, is in the same direction as that of the two functions shown in the center. By contrast, because the parameter type of a <span class="code">Function1</span> is defined as contravariant, the inheritance relationship of the two parameter types, shown at the left of the diagram, is in the opposite direction as that of the two functions.</p>
       <div class="figure">
         <a id="fig-contravariance"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/variance160.png" alt="images/variance160.png"></p>
+        <p><img src="variance160.png" alt="images/variance160.png"></p>
       </div>
       <h5> Figure 19.1 - Covariance and contravariance in function type parameters.</h5>
       <p><a id="lst-optimized-functional-queues"></a></p> <pre>  &nbsp;&nbsp;<code class="vem">class</code>&nbsp;<code class="typename">Queue[+T]</code>&nbsp;<code class="vem">private</code>&nbsp;(
@@ -8465,7 +8465,7 @@
       <p><span class="code">List</span> is an abstract class, so you cannot define elements by calling the empty <span class="code">List</span> constructor. For instance the expression "<span class="code">new</span>&nbsp;<span class="code">List</span>" would be illegal. The class has a type parameter <span class="code">A</span>. The <span class="code">+</span> in front of this type parameter specifies that lists are covariant, as discussed in <a href="#chap-type-parameterization">Chapter 19</a><a id="i-588033271-1"></a>.</p>
       <div class="figure">
         <a id="fig-list-hierarchy"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/listHierarchy85.png" alt="images/listHierarchy85.png"></p>
+        <p><img src="listHierarchy85.png" alt="images/listHierarchy85.png"></p>
       </div>
       <h5> Figure 22.1 - Class hierarchy for Scala lists.<a id="i-490886053-1"></a><a id="i-322128956-1"></a><a id="i164593921-1"></a></h5>
       <p>Because of this property, you can assign a value of type <span class="code">List[Int]</span> to a variable of type <span class="code">List[Any]</span>:</p> <pre>  scala&gt;&nbsp;<code class="vem">val</code>&nbsp;xs&nbsp;=&nbsp;<code class="typename">List</code>(<code class="literal">1</code>,&nbsp;<code class="literal">2</code>,&nbsp;<code class="literal">3</code>)
@@ -8537,7 +8537,7 @@
       <p>With the formulation of <span class="code">::</span> shown in <a href="#lst-cons-method-def">Listing 22.3</a>, you can check how the definition of <span class="code">fruits</span> shown in <a href="#lst-supertype-cons">Listing 22.2</a> works out type-wise: In that definition, the type parameter <span class="code">B</span> of <span class="code">::</span> is instantiated to <span class="code">Fruit</span>. The lower-bound constraint of <span class="code">B</span> is satisfied because the list <span class="code">apples</span> has type <span class="code">List[Apple]</span> and <span class="code">Fruit</span> is a supertype of <span class="code">Apple</span>. The argument to the <span class="code">::</span> is <span class="code">new</span>&nbsp;<span class="code">Orange</span>, which conforms to type <span class="code">Fruit</span>. Therefore, the method application is type-correct with result type <span class="code">List[Fruit]</span>. <a href="#fig-more-fruit">Figure 22.2</a> illustrates the structure of the lists that result from executing the code shown in <a href="#lst-supertype-cons">Listing 22.2</a>.</p>
       <div class="figure">
         <a id="fig-more-fruit"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/moreFruit160.png" alt="images/moreFruit160.png"></p>
+        <p><img src="moreFruit160.png" alt="images/moreFruit160.png"></p>
       </div>
       <h5> Figure 22.2 - The structure of the Scala lists shown in <a href="#lst-supertype-cons">Listing 22.2</a>.<a id="i-1313439186-1"></a></h5>
       <p>In fact, the polymorphic definition of <span class="code">::</span> with the lower bound <span class="code">A</span> is not only convenient, it is also necessary to render the definition of class <span class="code">List</span> type-correct. This is because <span class="code">List</span>s are defined to be covariant<a id="i-1469695991-2"></a>.</p>
@@ -11596,7 +11596,7 @@
       <p><a href="#fig-collections-architecture">Figure 25.1</a> shows the inheritance relationships between the main template traits and collection types. Traits whose name ends in <span class="code">Ops</span> are the template traits.</p>
       <div class="figure">
         <a id="fig-collections-architecture"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/collectionsFramework160.png" alt="images/collectionsFramework160.png"></p>
+        <p><img src="collectionsFramework160.png" alt="images/collectionsFramework160.png"></p>
       </div>
       <h5> Figure 25.1 - The main traits of the collections framework.</h5>
       <h4>Handling strictness</h4>
@@ -12141,7 +12141,7 @@
       <h5>Listing 25.16 - An implementation of prefix maps (continued).</h5>
       <div class="figure">
         <a id="fig-patrica"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/patricia160.png" alt="images/patricia160.png"></p>
+        <p><img src="patricia160.png" alt="images/patricia160.png"></p>
       </div>
       <h5> Figure 25.2 - An example Patricia trie.</h5>
       <p>Patricia tries support very efficient lookups and updates. Another nice feature is that they support selecting a subcollection by giving a prefix. For instance, in the tree in <a href="#fig-patrica">Figure 25.2</a> you can obtain the sub-collection of all keys that start with an "<span class="code">a</span>" simply by following the "<span class="code">a</span>" link from the root of the tree.</p>
@@ -13906,7 +13906,7 @@
       <p>The option returned by <span class="code">value</span> contains a <span class="code">Try</span>. As shown in <a href="#fig-try-hierarchy">Figure 32.1</a>, a <span class="code">Try</span> is either a <span class="code">Success</span>, which contains a value of type <span class="code">T</span>, or a <span class="code">Failure</span>, which contains an exception (an instance of <span class="code">java.lang.Throwable</span>). The purpose of <span class="code">Try</span> is to provide for asynchronous computations what the <span class="code">try</span> expression provides for synchronous computations: It allows you to deal with the possibility that the computation will complete abruptly with an exception rather than return a result.<a href="#footnotemain32-2">[2]</a></p>
       <div class="figure">
         <a id="fig-try-hierarchy"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/tryHierarchy85.png" alt="images/tryHierarchy85.png"></p>
+        <p><img src="tryHierarchy85.png" alt="images/tryHierarchy85.png"></p>
       </div>
       <h5> Figure 32.1 - Class hierarchy for <span class="code">Try</span>.<a id="i532116857-1"></a><a id="i1073460856-1"></a></h5>
       <p>For synchronous computations you can use <span class="code">try</span>/<span class="code">catch</span> to ensure that a thread that invokes a method catches and handles exceptions thrown by the method. For asynchronous computations, however, the thread that initiates the computation often moves on to other tasks. Later if that asynchronous computation fails with an exception, the original thread is no longer able to handle the exception in a <span class="code">catch</span> clause. Thus when working with a <span class="code">Future</span> representing an asynchronous activity, you use <span class="code">Try</span> to deal with the possibility that the activity fails to yield a value and instead completes abruptly with an exception. Here's an example that shows what happens when an asynchronous activity fails:</p> <pre>  scala&gt;&nbsp;<code class="vem">val</code>&nbsp;fut&nbsp;=&nbsp;<code class="typename">Future</code>&nbsp;{&nbsp;Thread.sleep(<code class="literal">10000</code>);&nbsp;<code class="literal">21</code>&nbsp;/&nbsp;<code class="literal">0</code>&nbsp;}
@@ -14915,8 +14915,8 @@
         <table style="border-collapse: collapse">
           <tbody>
             <tr>
-              <td> <img src="/library/view/programming-in-scala/9780981531618/images/firstSwingAppLittleGray96.png" alt="images/firstSwingAppLittleGray96.png"> </td>
-              <td> <img src="/library/view/programming-in-scala/9780981531618/images/firstSwingAppBigGray96.png" alt="images/firstSwingAppBigGray96.png"> </td>
+              <td> <img src="firstSwingAppLittleGray96.png" alt="images/firstSwingAppLittleGray96.png"> </td>
+              <td> <img src="firstSwingAppBigGray96.png" alt="images/firstSwingAppBigGray96.png"> </td>
             </tr>
           </tbody>
         </table>
@@ -14958,8 +14958,8 @@
         <table style="border-collapse: collapse">
           <tbody>
             <tr>
-              <td> <img src="/library/view/programming-in-scala/9780981531618/images/noClicks2Gray96.png" alt="images/noClicks2Gray96.png"> </td>
-              <td> <img src="/library/view/programming-in-scala/9780981531618/images/sevenClicks2Gray96.png" alt="images/sevenClicks2Gray96.png"> </td>
+              <td> <img src="noClicks2Gray96.png" alt="images/noClicks2Gray96.png"> </td>
+              <td> <img src="sevenClicks2Gray96.png" alt="images/sevenClicks2Gray96.png"> </td>
             </tr>
           </tbody>
         </table>
@@ -15046,7 +15046,7 @@
       <p><a href="#listing-reactive-swing-app">Listing 34.3</a> shows the completed application, including reactions. The code illustrates the essential elements of a GUI application in Scala's Swing framework: The application consists of a tree of components, starting with the <span class="code">top</span> frame. The components shown in the code are <span class="code">Frame</span>, <span class="code">BoxPanel</span>, <span class="code">Button</span>, and <span class="code">Label</span>, but there are many other kinds of components defined in the Swing libraries. Each component is customized by setting attributes. Two important attributes are <span class="code">contents</span>, which fixes the children of a component in the tree, and <span class="code">reactions</span>, which determines how the component reacts to events.</p>
       <div class="figure">
         <a id="fig-swing3"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/tempConverterGray112.png" alt="images/tempConverterGray112.png"></p>
+        <p><img src="tempConverterGray112.png" alt="images/tempConverterGray112.png"></p>
       </div>
       <h5> Figure 34.3 - A converter between degrees Celsius and Fahrenheit.</h5>
       <p><a id="listing-converter"></a></p> <pre>  &nbsp;&nbsp;<code class="vem">import</code>&nbsp;swing._
@@ -15107,7 +15107,7 @@
       <p>There are several reasons why this task is interesting. First, everybody knows spreadsheets, so it is easy to understand what the application should do. Second, spreadsheets are programs that exercise a large range of different computing tasks. There's the visual aspect, where a spreadsheet is seen as a rich GUI application.<a id="i1275390415-2"></a> There's the symbolic aspect, having to do with formulas and how to parse and interpret them. There's the calculational aspect, dealing with how to update possibly large tables incrementally. There's the reactive aspect, where spreadsheets are seen as programs that react in intricate ways to events. Finally, there's the component aspect where the application is constructed as a set of reusable components.<a id="i-421431555-1"></a> All these aspects will be treated in depth in this chapter.</p>
       <div class="figure">
         <a id="fig-scells1"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/scells1Gray96.png" alt="images/scells1Gray96.png"></p>
+        <p><img src="scells1Gray96.png" alt="images/scells1Gray96.png"></p>
       </div>
       <h5> Figure 35.1 - A simple spreadsheet table.</h5>
       <h3>35.1 The visual framework</h3>
@@ -15190,7 +15190,7 @@
       <h5>Listing 35.4 - First version of the <span class="code">Model</span> class.</h5>
       <div class="figure">
         <a id="fig-scells2"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/scells2Gray96.png" alt="images/scells2Gray96.png"></p>
+        <p><img src="scells2Gray96.png" alt="images/scells2Gray96.png"></p>
       </div>
       <h5> Figure 35.2 - Cells displaying themselves.</h5>
       <p>That's it. If you compile the modified <span class="code">Spreadsheet</span> class with the <span class="code">Model</span> class and run the <span class="code">Main</span> application you should see a window as in <a href="#fig-scells2">Figure 35.2</a>.</p>
@@ -15327,7 +15327,7 @@
       <p>It contains the <span class="code">table</span> that was changed, as well as a set of coordinates of affected cells given by <span class="code">rows</span> and <span class="code">column</span>. The <span class="code">rows</span> parameter is a range value of type <span class="code">Range[Int]</span>.<a href="#footnotemain35-2">[2]</a> The <span class="code">column</span> parameter is an integer. So in general a <span class="code">TableUpdated</span> event can refer to several affected cells, but they would be on a consecutive range of rows and share the same column.</p>
       <div class="figure">
         <a id="fig-scells3"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/scells3Gray96.png" alt="images/scells3Gray96.png"></p>
+        <p><img src="scells3Gray96.png" alt="images/scells3Gray96.png"></p>
       </div>
       <h5> Figure 35.3 - Cells displaying their formulas.</h5>
       <p>Once a table is changed, the affected cells need to be re-parsed. To react to a <span class="code">TableUpdated</span> event, you add a case to the <span class="code">reactions</span> value of the <span class="code">table</span> component, as is shown in <a href="#lst-spreadsheet-parses-formulas">Listing 35.6</a>.<a id="i-1242645043-1"></a> Now, whenever the table is edited the formulas of all affected cells will be updated by parsing the corresponding user data. When compiling the classes discussed so far and launching the <span class="code">scells.Main</span> application you should see a spreadsheet application like the one shown in <a href="#fig-scells3">Figure 35.3</a>. You can edit cells by typing into them. After editing is done, a cell displays the formula it contains. You can also try to type some illegal input such as the one reading <span class="code">=add(1,</span>&nbsp;<span class="code">X)</span> in the field that has the editing focus in <a href="#fig-scells3">Figure 35.3</a>. Illegal input will show up as an error message. For instance, once you'd leave the edited field in <a href="#fig-scells3">Figure 35.3</a> you should see the error message <span class="code">[`('</span>&nbsp;<span class="code">expected]</span> in the cell (to see all of the error message you might need to widen the column by dragging the separation between the column headers to the right).</p>
@@ -15417,7 +15417,7 @@
       <p>Another change in the <span class="code">Model</span> class concerns the way cells display themselves. In the new version, the displayed value of a cell depends on its formula. If the formula is a <span class="code">Textual</span> field, the contents of the field are displayed literally. In all other cases, the formula is evaluated and the result <span class="code">value</span> of that evaluation is displayed.</p>
       <div class="figure">
         <a id="fig-scells4"></a>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/scells4Gray96.png" alt="images/scells4Gray96.png"></p>
+        <p><img src="scells4Gray96.png" alt="images/scells4Gray96.png"></p>
       </div>
       <h5> Figure 35.4 - Cells that evaluate.</h5>
       <p>If you compile the changed traits and classes and relaunch the <span class="code">Main</span> program you get something that starts to resemble a real spreadsheet. <a href="#fig-scells4">Figure 35.4</a> shows an example. You can enter formulas into cells and get them to evaluate themselves. For instance, once you close the editing focus on cell <span class="code">C5</span> in <a href="#fig-scells4">Figure 35.4</a>, you should see <span class="code">86.0</span>, the result of evaluating the formula <span class="code">sum(C1:C4)</span>.</p>
@@ -18811,7 +18811,7 @@
       </div>
       <div style="text-align: center">
         <p><span style="font-size:xx-large">Take the fun path to deeper understanding<br> <span style="font-size:x-large">with this new book from Artima Press:<br> </span></span></p>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/Book-Ads/scalaPuzzlersJustFrontWithBorder64.png" alt="images/Book-Ads/scalaPuzzlersJustFrontWithBorder64.png"> <br></p>
+        <p><img src="Book-Ads/scalaPuzzlersJustFrontWithBorder64.png" alt="images/Book-Ads/scalaPuzzlersJustFrontWithBorder64.png"> <br></p>
       </div>
       <p><em>Scala Puzzlers</em> is a collection of enigmatic Scala code examples that behave highly contrary to expectations. Working through these code examples and the subsequent explanations will provide important and often fundamental insights into Scala. Get ready for a fun journey that will take you further down the road to Scala mastery.</p>
       <p><span class="textbf"><span style="font-size:large">Scala Puzzlers: The fun path to deeper understanding</span></span><br> by Andrew Phillips and Nerin Šerifović<br> <span style="font-size:small">ISBN: 978-0-9815316-7-0</span><br> <span style="font-size:small">$38.95 paper book / $25.00 PDF eBook</span><br></p>
@@ -18822,11 +18822,11 @@
         <div style="text-align: center">
           <p><span style="font-size:xx-large">Other titles from Artima Press</span></p>
         </div>
-        <p><img src="/library/view/programming-in-scala/9780981531618/images/Book-Ads/scalaCheckCoverJustFrontWithBorder32.png" alt="images/Book-Ads/scalaCheckCoverJustFrontWithBorder32.png"></p>
+        <p><img src="Book-Ads/scalaCheckCoverJustFrontWithBorder32.png" alt="images/Book-Ads/scalaCheckCoverJustFrontWithBorder32.png"></p>
         <p><br>Property-based testing allows you to express your tests in terms of functions called "properties" that describe your code's behavior, leaving the task of test case generation and evaluation to the testing tool. <em>ScalaCheck: The Definitive Guide</em> is the authoritative guide to ScalaCheck, a property-based testing tool for Scala. Written by the creator of ScalaCheck, this book will help you learn how to take advantage of this valuable complement to traditional testing techniques.</p>
         <p><span class="textbf"><span style="font-size:large">ScalaCheck: The Definitive Guide</span></span><br> by Rickard Nilsson<br> <span style="font-size:small">ISBN: 978-0-9815316-9-4</span><br> <span style="font-size:small">$24.95 paper book / $15.00 PDF eBook</span><br> Order it now at: <a href="https://www.artima.com/shop/scalacheck">https://www.artima.com/shop/scalacheck</a></p>
         <div style="font-size:medium">
-          <p><img src="/library/view/programming-in-scala/9780981531618/images/Book-Ads/akkaConcurrencyCoverJustFrontWithBorder32.png" alt="images/Book-Ads/akkaConcurrencyCoverJustFrontWithBorder32.png"></p>
+          <p><img src="Book-Ads/akkaConcurrencyCoverJustFrontWithBorder32.png" alt="images/Book-Ads/akkaConcurrencyCoverJustFrontWithBorder32.png"></p>
           <p><br> <em>Akka Concurrency</em> is the authoritative guide to concurrent programming with Akka. Written as a practical guide, it will teach you not just the "what" and "how" of Akka, but also the "why." Akka isn't just a toolkit you can use to write your concurrent applications: it embodies a set of paradigms you can use to <em>reason</em> about those applications. This book will give you a whole new perspective on how you design, build, and think about concurrent applications on the JVM.</p>
           <p><span class="textbf"><span style="font-size:large">Akka Concurrency</span></span><br> by Derek Wyatt<br> <span style="font-size:small">ISBN: 978-0-9815316-6-3</span><br> <span style="font-size:small">$45.95 paper book / $26.95 PDF eBook</span><br> Order it now at: <a href="https://www.artima.com/shop/akka_concurrency">https://www.artima.com/shop/akka_concurrency</a></p>
         </div>
