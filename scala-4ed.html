@@ -53,6 +53,9 @@
               const a = ' ' + div.getAttribute('class') + ' ';
               div.setAttribute('class', a.replace(' h ', '').trim());
             });
+            Array.from(document.querySelectorAll('div.js')).forEach(div => {
+              div.style.display = 'none';
+            });
           }
         }
       </script>
